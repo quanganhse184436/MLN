@@ -6,6 +6,7 @@ interface Props {
   current: Page;
   onNavigate: (page: Page) => void;
   accentColor?: string;
+  variant?: "top" | "pager";
 }
 
 const sections: { id: Page; label: string; short: string }[] = [
@@ -15,14 +16,13 @@ const sections: { id: Page; label: string; short: string }[] = [
   { id: "section4", label: "Mạng Xã Hội & Cái Tôi", short: "04" },
 ];
 
-export function SectionNav({ current, onNavigate, accentColor = "#8B1A35" }: Props) {
+export function SectionNav({ current, onNavigate, accentColor = "#8B1A35", variant = "top" }: Props) {
   const currentIdx = sections.findIndex((s) => s.id === current);
   const prev = currentIdx > 0 ? sections[currentIdx - 1] : null;
   const next = currentIdx < sections.length - 1 ? sections[currentIdx + 1] : null;
 
-  return (
-    <>
-      {/* Top Navbar */}
+  if (variant === "top") {
+    return (
       <nav
         style={{
           position: "fixed",
@@ -103,16 +103,18 @@ export function SectionNav({ current, onNavigate, accentColor = "#8B1A35" }: Pro
           Triết học Mác – Lênin
         </span>
       </nav>
+    );
+  }
 
-      {/* Bottom Prev/Next navigation */}
-      <div
-        style={{
-          backgroundColor: "#1C2533",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "stretch",
-        }}
-      >
+  return (
+    <div
+      style={{
+        backgroundColor: "#1C2533",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "stretch",
+      }}
+    >
         {prev ? (
           <button
             onClick={() => onNavigate(prev.id)}
@@ -211,7 +213,6 @@ export function SectionNav({ current, onNavigate, accentColor = "#8B1A35" }: Pro
             <Home size={20} />
           </button>
         )}
-      </div>
-    </>
+    </div>
   );
 }

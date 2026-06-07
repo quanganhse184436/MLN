@@ -337,7 +337,7 @@ export function Section3({ onNavigate }: Props) {
         </motion.section>
       </main>
 
-      <SectionNav current="section3" onNavigate={onNavigate} accentColor={ACCENT} />
+      <SectionNav current="section3" onNavigate={onNavigate} accentColor={ACCENT} variant="pager" />
     </div>
   );
 }

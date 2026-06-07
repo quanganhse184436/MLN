@@ -460,7 +460,7 @@ export function Section4({ onNavigate }: Props) {
         </div>
       </footer>
 
-      <SectionNav current="section4" onNavigate={onNavigate} accentColor={ACCENT} />
+      <SectionNav current="section4" onNavigate={onNavigate} accentColor={ACCENT} variant="pager" />
     </div>
   );
 }
